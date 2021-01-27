@@ -95,7 +95,6 @@ abstract class Abstract_Hook_Subscription implements Hook_Subscriber {
 				$this->args
 			);
 		}
-
 	}
 
 	/**

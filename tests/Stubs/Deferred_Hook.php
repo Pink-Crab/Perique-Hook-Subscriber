@@ -3,8 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Simple, single hook call test.
- *
+ * Tests the registering of the callback at a deferred time.
  */
 
 namespace PinkCrab\Hook_Subscriber\Tests\Stubs;
