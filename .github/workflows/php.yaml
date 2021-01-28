@@ -55,5 +55,8 @@ jobs:
           environment_github: true
         run: composer all
 
+      - name: Codecov
+        run: bash <(curl -s https://codecov.io/bash)
+
       - name : Create Coverage Badge
         run: vendor/bin/php-coverage-badger coverage-report/logs/clover.xml coverage-report/coverage.svg
