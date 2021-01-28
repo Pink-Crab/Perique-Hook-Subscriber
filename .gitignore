@@ -2,3 +2,4 @@
 /wordpress/
 composer.lock
 /coverage-report
+coverage.xml

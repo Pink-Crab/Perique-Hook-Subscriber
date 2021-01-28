@@ -47,10 +47,10 @@
 
     },
     "scripts": {
-        "test": "phpunit --coverage-html coverage-report",
+        "test": "phpunit --coverage-clover coverage.xml --coverage-html coverage-report",
         "analyse": "vendor/bin/phpstan analyse src -l8",
         "sniff": "./vendor/bin/phpcs src/ -v",
-        "all": "composer test && composer analyse && composer sniff"
+        "all": "composer test && composer analyse && composer sniff && vendor/bin/php-coverage-badger coverage-report/logs/clover.xml coverage.svg"
 
     }
 }

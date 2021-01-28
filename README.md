@@ -6,7 +6,7 @@ Creates a single subscriber for a hook, part of the PinkCrab Plugin Framework
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)]()
 
 ![](https://github.com/Pink-Crab/Hook_Subscriber/workflows/GitHub_CI/badge.svg " ")
-![alt text](coverage-report/coverage.svg " ") 
+![alt text](coverage.svg " ") 
 
 ![alt text](https://img.shields.io/badge/PHPStan-level%208-brightgreen.svg?style=flat " ")
 ![alt text](https://img.shields.io/badge/WP_PHPUnit-V5-brightgreen.svg?style=flat " ")
