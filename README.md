@@ -1,9 +1,10 @@
 # WordPress Hook Subscriber
 
-Creates a single subscriber for a hook, part of the PinkCrab Plugin Framework[*PSR16`s CacheInterface*](https://github.com/php-fig/simple-cache).
+Creates a single subscriber for a hook, part of the PinkCrab Plugin Framework
 
 ![alt text](https://img.shields.io/badge/Current_Version-0.2.1-yellow.svg?style=flat " ") 
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)]()
+
 
 ![](https://github.com/Pink-Crab/Hook_Subscriber/workflows/GitHub_CI/badge.svg " ")
 ![alt text](https://img.shields.io/badge/PHPStan-level%208-brightgreen.svg?style=flat " ")
