@@ -73,7 +73,7 @@ abstract class Abstract_Hook_Subscription implements Hook_Subscriber {
 		}
 
 		// If we have a deffered event.
-		if ( $this->deferred_hook ) {
+		if ( ! empty( $this->deferred_hook ) ) {
 			$loader->action(
 				$this->deferred_hook,
 				function( ...$args ) { // phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.FoundInImplementedInterface
