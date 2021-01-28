@@ -4,14 +4,10 @@ Creates a single subscriber for a hook, part of the PinkCrab Plugin Framework
 
 ![alt text](https://img.shields.io/badge/Current_Version-0.2.2-yellow.svg?style=flat " ") 
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)]()
+![](https://github.com/Pink-Crab/Hook_Subscriber/workflows/PinkCrab_GitHub_CI/badge.svg " ")
+[![codecov](https://codecov.io/gh/Pink-Crab/Hook_Subscriber/branch/master/graph/badge.svg?token=EYM4QX2CQ9)](https://codecov.io/gh/Pink-Crab/Hook_Subscriber)
 
 
-![](https://github.com/Pink-Crab/Hook_Subscriber/workflows/GitHub_CI/badge.svg " ")
-![alt text](coverage-report/coverage.svg " ") 
-
-![alt text](https://img.shields.io/badge/PHPStan-level%208-brightgreen.svg?style=flat " ")
-![alt text](https://img.shields.io/badge/WP_PHPUnit-V5-brightgreen.svg?style=flat " ")
-![alt text](https://img.shields.io/badge/PHPCS-WP_Extra-brightgreen.svg?style=flat " ")
 
 
 ***********************************************
