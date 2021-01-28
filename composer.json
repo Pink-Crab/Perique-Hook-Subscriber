@@ -42,7 +42,6 @@
     },
     "require": {
         "php": ">=7.1.0",
-        "psr/simple-cache": "^1.0.1",
         "pinkcrab/plugin-framework": "0.3.*"
 
     },
@@ -52,6 +51,5 @@
         "analyse": "vendor/bin/phpstan analyse src -l8",
         "sniff": "./vendor/bin/phpcs src/ -v",
         "all": "composer test && composer analyse && composer sniff"
-
     }
 }
