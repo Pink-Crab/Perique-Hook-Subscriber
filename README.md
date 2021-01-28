@@ -133,3 +133,4 @@ function achme_plugin_function(){
 
 * 0.2.0 - Moved from the inital Event_Hook naming and made a few minor changes to how deferred hooks are added, using DI to recreate an new instance, over resetting state.
 * 0.2.1 Added in a extra tests and coverage reports.
+* 0.2.2 Added in coverage reports and badge on readme.md
