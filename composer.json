@@ -42,12 +42,12 @@
     },
     "require": {
         "php": ">=7.1.0",
-        "pinkcrab/plugin-framework": "0.3.*"
+        "pinkcrab/plugin-framework": "0.4.*"
 
     },
     "scripts": {
-        "test": "phpunit --coverage-clover coverage.xml",
-        "coverage": "phpunit --coverage-html coverage-report",
+        "test": "phpunit --coverage-clover coverage.xml --testdox",
+        "coverage": "phpunit --coverage-html coverage-report --testdox",
         "analyse": "vendor/bin/phpstan analyse src -l8",
         "sniff": "./vendor/bin/phpcs src/ -v",
         "all": "composer test && composer analyse && composer sniff"

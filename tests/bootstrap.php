@@ -1,9 +1,10 @@
 <?php
 
 use Dice\Dice;
+use PinkCrab\Loader\Loader;
 use PinkCrab\Core\Application\App;
 use PinkCrab\Core\Services\Dice\WP_Dice;
-use PinkCrab\Core\Services\Registration\Loader;
+use PinkCrab\Core\Application\App_Factory;
 use PinkCrab\Core\Services\ServiceContainer\Container;
 use PinkCrab\Hook_Subscriber\Tests\Stubs\Deferred_Hook;
 use PinkCrab\Core\Services\Registration\Register_Loader;
@@ -22,26 +23,19 @@ require_once getenv( 'WP_PHPUNIT__DIR' ) . '/includes/functions.php';
 tests_add_filter(
 	'muplugins_loaded',
 	function() {
-		$loader    = Loader::boot();
-		$di        = WP_Dice::constructWith( new Dice() );
-		$container = new Container();
-
-		// Setup the service container .
-		$container->set( 'di', $di );
-		$app = App::init( $container );
+		$app = ( new App_Factory )->with_wp_dice( true );
 
 		add_action(
 			'init',
-			function () use ( $loader, $app ) {
+			function () use ( $app ) {
 
 				// Mock global.
 				global $deferred_global;
 				$deferred_global = 'init';
 
 				// Register our test subscribers.
-				$registerables = array( On_Single_Hook::class, Deferred_Hook::class );
-				Register_Loader::initalise( $app, $registerables, $loader );
-				$loader->register_hooks();
+				$app->registration_classses( array( On_Single_Hook::class, Deferred_Hook::class ) );
+				$app->boot();
 			},
 			1
 		);
