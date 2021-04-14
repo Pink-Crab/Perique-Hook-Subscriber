@@ -14,7 +14,7 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use PinkCrab\PHPUnit_Helpers\Reflection;
 use PinkCrab\Hook_Subscriber\Hook_Subscriber;
-use PinkCrab\Core\Services\Registration\Loader;
+use PinkCrab\Loader\Loader;
 use PinkCrab\Hook_Subscriber\Tests\Stubs\On_Single_Hook;
 
 class Test_Failures extends TestCase {

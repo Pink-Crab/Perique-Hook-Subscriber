@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace PinkCrab\Hook_Subscriber\Tests;
 
+use PinkCrab\Loader\Loader;
 use PHPUnit\Framework\TestCase;
 use PinkCrab\PHPUnit_Helpers\Reflection;
 use PinkCrab\Hook_Subscriber\Hook_Subscriber;
-use PinkCrab\Core\Services\Registration\Loader;
 use PinkCrab\Hook_Subscriber\Tests\Stubs\Deferred_Hook;
 
 class Test_Deferred_Hook extends TestCase {
@@ -41,7 +41,9 @@ class Test_Deferred_Hook extends TestCase {
 	 * @return void
 	 */
 	public function test_run(): void {
-
+		// add to loader and get loader.
+		$this->initialise_loader( new Deferred_Hook() )->register_hooks();
+		
 		// Populate mock global and call deferred hook.
 		add_action(
 			'pc_pre_deferred_hook',
@@ -78,11 +80,11 @@ class Test_Deferred_Hook extends TestCase {
 		$loader = $this->initialise_loader( $subscriber );
 
 		// Get the registered hook form the loader
-		$global = Reflection::get_private_property( $loader, 'global' );
+		$global = Reflection::get_private_property( $loader, 'hooks' );
 		$hook   = $global->pop();
 
 		// Check it has our set handle.
-		$this->assertEquals( 'pc_pre_deferred_hook', $hook['handle'] );
+		$this->assertEquals( 'pc_pre_deferred_hook', $hook->get_handle() );
 	}
 
 
