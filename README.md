@@ -2,19 +2,19 @@
 
 Creates a single subscriber for a hook, part of the PinkCrab Plugin Framework
 
-![alt text](https://img.shields.io/badge/Current_Version-0.2.2-yellow.svg?style=flat " ") 
+![alt text](https://img.shields.io/badge/Current_Version-1.0.0-yellow.svg?style=flat " ") 
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)]()
 ![](https://github.com/Pink-Crab/Hook_Subscriber/workflows/PinkCrab_GitHub_CI/badge.svg " ")
 [![codecov](https://codecov.io/gh/Pink-Crab/Hook_Subscriber/branch/master/graph/badge.svg?token=EYM4QX2CQ9)](https://codecov.io/gh/Pink-Crab/Hook_Subscriber)
-
-
 
 
 ***********************************************
 
 ## Requirements
 
-Requires PinkCrab Plugin Framework Composer and WordPress.
+Requires PinkCrab Perique Framework V1.* 
+
+> For support of the older PinkCrab Plugin Framewok please use **Hook Subscriber v0.2.2**
 
 Works with PHP versions 7.1, 7.2, 7.3 & 7.4
 
@@ -127,6 +127,8 @@ function achme_plugin_function(){
 
 ## Changelog
 
-* 0.2.0 - Moved from the inital Event_Hook naming and made a few minor changes to how deferred hooks are added, using DI to recreate an new instance, over resetting state.
+* 1.0.0 - Now supports Perique and its move from Registerable to Hookable interface naming.
+* **---- Core renamed from PinkCrab Plugin Framework to Perique ----**
+* 0.2.2 Updated tests and code to reflect changes in Framework 0.4.*
 * 0.2.1 Added in a extra tests and coverage reports.
-* 0.2.2 Added in coverage reports and badge on readme.md
+* 0.2.0 - Moved from the initial Event_Hook naming and made a few minor changes to how deferred hooks are added, using DI to recreate an new instance, over resetting state.

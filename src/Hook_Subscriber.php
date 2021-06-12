@@ -24,9 +24,9 @@ declare(strict_types=1);
 
 namespace PinkCrab\Hook_Subscriber;
 
-use PinkCrab\Core\Interfaces\Registerable;
+use PinkCrab\Perique\Interfaces\Hookable;
 
-interface Hook_Subscriber extends Registerable {
+interface Hook_Subscriber extends Hookable {
 
 	/**
 	 * Callback back method.

@@ -1,7 +1,7 @@
 {
     "name": "pinkcrab/wp-hook-subscriber",
     "type": "library",
-    "description": "Creates a single subscriber for a hook, part of the PinkCrab Plugin Framework",
+    "description": "Creates a single subscriber for a hook, part of the PinkCrab Perique Framework",
     "keywords": [],
     "homepage": "https://pinkcrab.co.uk",
     "license": "MIT",
@@ -22,10 +22,6 @@
             "PinkCrab\\Hook_Subscriber\\Tests\\": "tests/"
         }
     },
-    "repositories": [{
-        "url": "https://github.com/Pink-Crab/PHP_Unit_Helpers.git",
-        "type": "git"
-    }],
     "require-dev": {
         "phpunit/phpunit": "^7.0",
         "roots/wordpress": "^5.5",
@@ -37,18 +33,18 @@
         "dealerdirect/phpcodesniffer-composer-installer": "*",
         "wp-coding-standards/wpcs": "*",
         "object-calisthenics/phpcs-calisthenics-rules": "*",
-        "pinkcrab/phpunit-helpers": "dev-master",
+        "gin0115/wpunit-helpers": "~1.0.0",
         "jaschilz/php-coverage-badger": "^2.0"
     },
     "require": {
         "php": ">=7.1.0",
-        "pinkcrab/plugin-framework": "0.4.*"
+        "pinkcrab/perique-framework-core": "^1.0"
 
     },
     "scripts": {
-        "test": "phpunit --coverage-clover coverage.xml --testdox",
-        "coverage": "phpunit --coverage-html coverage-report --testdox",
-        "analyse": "vendor/bin/phpstan analyse src -l8",
+        "test": "./vendor/bin/phpunit --coverage-clover coverage.xml --testdox",
+        "coverage": "./vendor/bin/phpunit --coverage-html coverage-report --testdox",
+        "analyse": "./vendor/bin/phpstan analyse src -l8",
         "sniff": "./vendor/bin/phpcs src/ -v",
         "all": "composer test && composer analyse && composer sniff"
     }
