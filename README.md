@@ -2,19 +2,19 @@
 
 Creates a single subscriber for a hook, part of the PinkCrab Plugin Framework
 
-![alt text](https://img.shields.io/badge/Current_Version-0.2.2-yellow.svg?style=flat " ") 
+![alt text](https://img.shields.io/badge/Current_Version-1.0.0-yellow.svg?style=flat " ") 
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)]()
 ![](https://github.com/Pink-Crab/Hook_Subscriber/workflows/PinkCrab_GitHub_CI/badge.svg " ")
 [![codecov](https://codecov.io/gh/Pink-Crab/Hook_Subscriber/branch/master/graph/badge.svg?token=EYM4QX2CQ9)](https://codecov.io/gh/Pink-Crab/Hook_Subscriber)
-
-
 
 
 ***********************************************
 
 ## Requirements
 
-Requires PinkCrab Plugin Framework Composer and WordPress.
+Requires PinkCrab Perique Framework V1.* 
+
+> For support of the older PinkCrab Plugin Framework please use **Hook Subscriber v0.2.2**
 
 Works with PHP versions 7.1, 7.2, 7.3 & 7.4
 
@@ -26,7 +26,7 @@ $ composer require pinkcrab/wp-hook-subscriber
 
 This module allows for the creation of single Hook Subscriptions for creating an interface with WordPress. Under the hood it still uses the same registration process, the PinkCrab framework is built on, but gives a clean abstraction for single calls.
 
-Each class which extends the provided base class, will have its hook added to the loader on either the defined action or deffered. Allowing full use of the DI container.
+Each class which extends the provided base class, will have its hook added to the loader on either the defined action or differed. Allowing full use of the DI container.
 
 Due to the way the Loader registers hook calls, classes are instanced on the init hook. Which can be problematic for WooCommerce and other extendable plugins, where some globals are populated later. The Hook_Subscriber allows for late construction, so your callback will be created in the global scope at that time.
 
@@ -47,7 +47,7 @@ class On_Single_Hook extends Abstract_Hook_Subscription {
      */
     protected $my_service;
 
-    public function __constuct(My_Service $my_service ){
+    public function __construct(My_Service $my_service ){
         $this->my_service = $my_service;
     }
 
@@ -57,7 +57,7 @@ class On_Single_Hook extends Abstract_Hook_Subscription {
      */
 	public function execute( ...$args ): void {
 		// Args are accessed in the order they are passed.
-        // do_actuion('foo', 'first','second','third',.....);
+        // do_action('foo', 'first','second','third',.....);
         //$args[0] = first, $args[1] = second, $args[2] = third, .....
 
         if($args[0] === 'something'){
@@ -82,7 +82,7 @@ class Deferred_Hook extends Abstract_Hook_Subscription {
 	protected $hook = 'some_hook';
 
     /**
-	 * Defered hook to call
+	 * Deferred hook to call
 	 *
 	 * @var string|null
 	 */
@@ -94,7 +94,7 @@ class Deferred_Hook extends Abstract_Hook_Subscription {
      */
     protected $some_global;
 
-    public function __constuct(){
+    public function __construct(){
         global $some_global;
         $this->some_global = $some_global;
     }
@@ -104,7 +104,7 @@ class Deferred_Hook extends Abstract_Hook_Subscription {
      * @param mixed ...$args
      */
 	public function execute( ...$args ): void {
-        // Depends on a global wich is set later than init.
+        // Depends on a global which is set later than init.
         if ( $args[0] === 'something' && ! empty( $this->some_global ) ) {
             do_something( $this->some_global->some_property, $args[1] );
         }        
@@ -127,6 +127,8 @@ function achme_plugin_function(){
 
 ## Changelog
 
-* 0.2.0 - Moved from the inital Event_Hook naming and made a few minor changes to how deferred hooks are added, using DI to recreate an new instance, over resetting state.
+* 1.0.0 - Now supports Perique and its move from Registerable to Hookable interface naming.
+* **---- Core renamed from PinkCrab Plugin Framework to Perique ----**
+* 0.2.2 Updated tests and code to reflect changes in Framework 0.4.*
 * 0.2.1 Added in a extra tests and coverage reports.
-* 0.2.2 Added in coverage reports and badge on readme.md
+* 0.2.0 - Moved from the initial Event_Hook naming and made a few minor changes to how deferred hooks are added, using DI to recreate an new instance, over resetting state.

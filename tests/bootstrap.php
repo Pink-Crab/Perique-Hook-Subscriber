@@ -1,13 +1,7 @@
 <?php
 
-use Dice\Dice;
-use PinkCrab\Loader\Loader;
-use PinkCrab\Core\Application\App;
-use PinkCrab\Core\Services\Dice\WP_Dice;
-use PinkCrab\Core\Application\App_Factory;
-use PinkCrab\Core\Services\ServiceContainer\Container;
+use PinkCrab\Perique\Application\App_Factory;
 use PinkCrab\Hook_Subscriber\Tests\Stubs\Deferred_Hook;
-use PinkCrab\Core\Services\Registration\Register_Loader;
 use PinkCrab\Hook_Subscriber\Tests\Stubs\On_Single_Hook;
 
 /**
@@ -34,7 +28,7 @@ tests_add_filter(
 				$deferred_global = 'init';
 
 				// Register our test subscribers.
-				$app->registration_classses( array( On_Single_Hook::class, Deferred_Hook::class ) );
+				$app->registration_classes( array( On_Single_Hook::class, Deferred_Hook::class ) );
 				$app->boot();
 			},
 			1
