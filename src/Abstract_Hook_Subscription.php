@@ -23,9 +23,9 @@ declare(strict_types=1);
 
 namespace PinkCrab\Hook_Subscriber;
 
-use PinkCrab\Loader\Loader;
 use InvalidArgumentException;
-use PinkCrab\Core\Application\App;
+use PinkCrab\Loader\Hook_Loader;
+use PinkCrab\Perique\Application\App;
 use PinkCrab\Hook_Subscriber\Hook_Subscriber;
 
 abstract class Abstract_Hook_Subscription implements Hook_Subscriber {
@@ -62,17 +62,17 @@ abstract class Abstract_Hook_Subscription implements Hook_Subscriber {
 	/**
 	 * Registers subscriber to the loader.
 	 *
-	 * @param Loader $loader
+	 * @param Hook_Loader $loader
 	 * @return void
 	 * @throws InvalidArgumentException
 	 */
-	public function register( Loader $loader ): void {
+	public function register( Hook_Loader $loader ): void {
 
 		if ( ! is_string( $this->hook ) || empty( $this->hook ) ) {
 			throw new InvalidArgumentException( \sprintf( 'Hook not defined in %s subscriber', static::class ) );
 		}
 
-		// If we have a deffered event.
+		// If we have a differed event.
 		if ( ! empty( $this->deferred_hook ) ) {
 			$loader->action(
 				$this->deferred_hook,

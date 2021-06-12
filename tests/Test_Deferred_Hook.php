@@ -10,30 +10,30 @@ declare(strict_types=1);
 
 namespace PinkCrab\Hook_Subscriber\Tests;
 
-use PinkCrab\Loader\Loader;
 use PHPUnit\Framework\TestCase;
-use PinkCrab\PHPUnit_Helpers\Reflection;
+use PinkCrab\Loader\Hook_Loader;
+use Gin0115\WPUnit_Helpers\Objects;
 use PinkCrab\Hook_Subscriber\Hook_Subscriber;
 use PinkCrab\Hook_Subscriber\Tests\Stubs\Deferred_Hook;
 
 class Test_Deferred_Hook extends TestCase {
 
 	/**
-	 * Creats a new loader, and adds the passed subsctriber
+	 * Create a new loader, and adds the passed subscriber
 	 * Before returning the loader.
 	 *
 	 * @param Hook_Subscriber $subscriber
-	 * @return Loader
+	 * @return Hook_Loader
 	 */
-	protected function initialise_loader( Hook_Subscriber $subscriber ): Loader {
-		$loader = new Loader();
+	protected function initialise_loader( Hook_Subscriber $subscriber ): Hook_Loader {
+		$loader = new Hook_Loader();
 		$subscriber->register( $loader );
 		return $loader;
 	}
 
 	/**
 	 * Test that a deferred hook fires first, and allows the main
-	 * subscbriber to access the current global scope.
+	 * subscriber to access the current global scope.
 	 *
 	 * Final hook call, should have the global value set during deferred
 	 * hook call.
@@ -43,7 +43,7 @@ class Test_Deferred_Hook extends TestCase {
 	public function test_run(): void {
 		// add to loader and get loader.
 		$this->initialise_loader( new Deferred_Hook() )->register_hooks();
-		
+
 		// Populate mock global and call deferred hook.
 		add_action(
 			'pc_pre_deferred_hook',
@@ -80,7 +80,7 @@ class Test_Deferred_Hook extends TestCase {
 		$loader = $this->initialise_loader( $subscriber );
 
 		// Get the registered hook form the loader
-		$global = Reflection::get_private_property( $loader, 'hooks' );
+		$global = Objects::get_property( $loader, 'hooks' );
 		$hook   = $global->pop();
 
 		// Check it has our set handle.
