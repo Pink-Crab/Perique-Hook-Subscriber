@@ -41,28 +41,28 @@ class On_Single_Hook extends Abstract_Hook_Subscription {
 	 */
 	protected $hook = 'some_hook';
 
-    /** 
-     * Some service
-     * @param My_Service
-     */
-    protected $my_service;
+	/**
+		 * Some service
+		 * @param My_Service
+		 */
+		protected $my_service;
 
-    public function __construct(My_Service $my_service ){
-        $this->my_service = $my_service;
-    }
+	public function __construct( My_Service $my_service ) {
+		$this->my_service = $my_service;
+	}
 
-    /** 
-     * Callback
-     * @param mixed ...$args
-     */
+	/**
+	 * Callback
+	 * @param mixed ...$args
+	 */
 	public function execute( ...$args ): void {
 		// Args are accessed in the order they are passed.
-        // do_action('foo', 'first','second','third',.....);
-        //$args[0] = first, $args[1] = second, $args[2] = third, .....
+		// do_action('foo', 'first','second','third',.....);
+		//$args[0] = first, $args[1] = second, $args[2] = third, .....
 
-        if($args[0] === 'something'){
-            $this->my_service->do_something($args[1]);
-        }        
+		if ( $args[0] === 'something' ) {
+			$this->my_service->do_something( $args[1] );
+		}
 	}
 }
 
@@ -81,33 +81,33 @@ class Deferred_Hook extends Abstract_Hook_Subscription {
 	 */
 	protected $hook = 'some_hook';
 
-    /**
+	/**
 	 * Deferred hook to call
 	 *
 	 * @var string|null
 	 */
 	protected $deferred_hook = 'some_global_populated';
 
-    /** 
-     * Our global data
-     * @param Some_Global|null
-     */
-    protected $some_global;
+	/**
+	 * Our global data
+	 * @param Some_Global|null
+	 */
+	protected $some_global;
 
-    public function __construct(){
-        global $some_global;
-        $this->some_global = $some_global;
-    }
+	public function __construct() {
+		global $some_global;
+		$this->some_global = $some_global;
+	}
 
-    /** 
-     * Callback
-     * @param mixed ...$args
-     */
+	/**
+	 * Callback
+	 * @param mixed ...$args
+	 */
 	public function execute( ...$args ): void {
-        // Depends on a global which is set later than init.
-        if ( $args[0] === 'something' && ! empty( $this->some_global ) ) {
-            do_something( $this->some_global->some_property, $args[1] );
-        }        
+		// Depends on a global which is set later than init.
+		if ( $args[0] === 'something' && ! empty( $this->some_global ) ) {
+			do_something( $this->some_global->some_property, $args[1] );
+		}
 	}
 }
 ```
