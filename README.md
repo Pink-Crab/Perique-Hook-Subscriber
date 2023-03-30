@@ -1,11 +1,20 @@
-# WordPress Hook Subscriber
+![logo](/.github/assets/Perique-Hook-Sub-Card.jpg "PinkCrab Perique Hook Subscriber")
+
+# Perique Hook Subscriber
 
 Creates a single subscriber for a hook, part of the PinkCrab Plugin Framework
 
-![alt text](https://img.shields.io/badge/Current_Version-1.0.0-yellow.svg?style=flat " ") 
-[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)]()
-![](https://github.com/Pink-Crab/Hook_Subscriber/workflows/PinkCrab_GitHub_CI/badge.svg " ")
-[![codecov](https://codecov.io/gh/Pink-Crab/Hook_Subscriber/branch/master/graph/badge.svg?token=EYM4QX2CQ9)](https://codecov.io/gh/Pink-Crab/Hook_Subscriber)
+[![Latest Stable Version](http://poser.pugx.org/pinkcrab/wp-hook-subscriber/v)](https://packagist.org/packages/pinkcrab/wp-hook-subscriber) [![Total Downloads](http://poser.pugx.org/pinkcrab/wp-hook-subscriber/downloads)](https://packagist.org/packages/pinkcrab/wp-hook-subscriber) [![Latest Unstable Version](http://poser.pugx.org/pinkcrab/wp-hook-subscriber/v/unstable)](https://packagist.org/packages/pinkcrab/wp-hook-subscriber) [![License](http://poser.pugx.org/pinkcrab/wp-hook-subscriber/license)](https://packagist.org/packages/pinkcrab/wp-hook-subscriber) [![PHP Version Require](http://poser.pugx.org/pinkcrab/wp-hook-subscriber/require/php)](https://packagist.org/packages/pinkcrab/wp-hook-subscriber)
+![GitHub contributors](https://img.shields.io/github/contributors/Pink-Crab/Perique-Hook-Subscriber?label=Contributors)
+![GitHub issues](https://img.shields.io/github/issues-raw/Pink-Crab/Perique-Hook-Subscriber)
+[![WordPress 5.9 Test Suite [PHP7.2-8.1]](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_5_9.yaml/badge.svg)](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_5_9.yaml)
+[![WordPress 6.0 Test Suite [PHP7.2-8.1]](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_6_0.yaml/badge.svg)](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_6_0.yaml)
+[![WordPress 6.1 Test Suite [PHP7.2-8.2]](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_6_1.yaml/badge.svg)](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_6_1.yaml)
+[![codecov](https://codecov.io/gh/Pink-Crab/Perique-Hook-Subscriber/branch/master/graph/badge.svg?token=EYM4QX2CQ9)](https://codecov.io/gh/Pink-Crab/Perique-Hook-Subscriber)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Pink-Crab/Perique-Hook-Subscriber/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Pink-Crab/Perique-Hook-Subscriber/?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8ac18bb04673f4a0dfa4/maintainability)](https://codeclimate.com/github/Pink-Crab/Perique-Hook-Subscriber/maintainability)
+
+
 
 
 ***********************************************
@@ -16,7 +25,9 @@ Requires PinkCrab Perique Framework V1.*
 
 > For support of the older PinkCrab Plugin Framework please use **Hook Subscriber v0.2.2**
 
-Works with PHP versions 7.1, 7.2, 7.3 & 7.4
+Works with PHP versions 7.2, 7.3, 7.4, 8.0, 8.1 & 8.2*
+
+> Please note PHP8.2 is only supported on WordPress 6.1 and above.
 
 ## Installation
 
@@ -35,35 +46,35 @@ Due to the way the Loader registers hook calls, classes are instanced on the ini
 ``` php
 class On_Single_Hook extends Abstract_Hook_Subscription {
 
-	/**
-	 * The hook to register the subscriber
-	 * @var string
-	 */
-	protected $hook = 'some_hook';
+   /**
+    * The hook to register the subscriber
+    * @var string
+    */
+   protected $hook = 'some_hook';
 
-	/**
-		 * Some service
-		 * @param My_Service
-		 */
-		protected $my_service;
+   /**
+       * Some service
+       * @param My_Service
+       */
+      protected $my_service;
 
-	public function __construct( My_Service $my_service ) {
-		$this->my_service = $my_service;
-	}
+   public function __construct( My_Service $my_service ) {
+      $this->my_service = $my_service;
+   }
 
-	/**
-	 * Callback
-	 * @param mixed ...$args
-	 */
-	public function execute( ...$args ): void {
-		// Args are accessed in the order they are passed.
-		// do_action('foo', 'first','second','third',.....);
-		//$args[0] = first, $args[1] = second, $args[2] = third, .....
+   /**
+    * Callback
+    * @param mixed ...$args
+    */
+   public function execute( ...$args ): void {
+      // Args are accessed in the order they are passed.
+      // do_action('foo', 'first','second','third',.....);
+      //$args[0] = first, $args[1] = second, $args[2] = third, .....
 
-		if ( $args[0] === 'something' ) {
-			$this->my_service->do_something( $args[1] );
-		}
-	}
+      if ( $args[0] === 'something' ) {
+         $this->my_service->do_something( $args[1] );
+      }
+   }
 }
 
 // Would be called by
@@ -75,47 +86,47 @@ do_action('some_hook', 'something', ['some','data','to do','something']);
 ``` php
 class Deferred_Hook extends Abstract_Hook_Subscription {
 
-	/**
-	 * The hook to register the subscriber
-	 * @var string
-	 */
-	protected $hook = 'some_hook';
+   /**
+    * The hook to register the subscriber
+    * @var string
+    */
+   protected $hook = 'some_hook';
 
-	/**
-	 * Deferred hook to call
-	 *
-	 * @var string|null
-	 */
-	protected $deferred_hook = 'some_global_populated';
+   /**
+    * Deferred hook to call
+    *
+    * @var string|null
+    */
+   protected $deferred_hook = 'some_global_populated';
 
-	/**
-	 * Our global data
-	 * @param Some_Global|null
-	 */
-	protected $some_global;
+   /**
+    * Our global data
+    * @param Some_Global|null
+    */
+   protected $some_global;
 
-	public function __construct() {
-		global $some_global;
-		$this->some_global = $some_global;
-	}
+   public function __construct() {
+      global $some_global;
+      $this->some_global = $some_global;
+   }
 
-	/**
-	 * Callback
-	 * @param mixed ...$args
-	 */
-	public function execute( ...$args ): void {
-		// Depends on a global which is set later than init.
-		if ( $args[0] === 'something' && ! empty( $this->some_global ) ) {
-			do_something( $this->some_global->some_property, $args[1] );
-		}
-	}
+   /**
+    * Callback
+    * @param mixed ...$args
+    */
+   public function execute( ...$args ): void {
+      // Depends on a global which is set later than init.
+      if ( $args[0] === 'something' && ! empty( $this->some_global ) ) {
+         do_something( $this->some_global->some_property, $args[1] );
+      }
+   }
 }
 ```
 
 > Somewhere in another plugin or wp-core $some_global is populated, we can then hook in anytime from when thats created and our hook is actually called.
 
 ``` php
-function achme_plugin_function(){
+function acme_plugin_function(){
     global $some_global; // Currently empty/null
     $some_global = new Some_Global();
 
@@ -127,6 +138,7 @@ function achme_plugin_function(){
 
 ## Changelog
 
+* 1.0.1 - Drops support for PHP 7.1, adds PHP8 support, updates all dependencies and adds 3rd party quality checks (Scrutinizer & CodeClimate)
 * 1.0.0 - Now supports Perique and its move from Registerable to Hookable interface naming.
 * **---- Core renamed from PinkCrab Plugin Framework to Perique ----**
 * 0.2.2 Updated tests and code to reflect changes in Framework 0.4.*

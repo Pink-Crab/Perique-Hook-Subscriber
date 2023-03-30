@@ -3,3 +3,6 @@
 composer.lock
 /coverage-report
 coverage.xml
+.vscode
+.phpunit.result.cache
+clover.xml
