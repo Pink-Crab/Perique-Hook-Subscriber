@@ -15,19 +15,9 @@ Creates a single subscriber for a hook, part of the PinkCrab Plugin Framework
 [![Maintainability](https://api.codeclimate.com/v1/badges/8ac18bb04673f4a0dfa4/maintainability)](https://codeclimate.com/github/Pink-Crab/Perique-Hook-Subscriber/maintainability)
 
 
-
-
-***********************************************
-
 ## Requirements
 
-Requires PinkCrab Perique Framework V1.* 
-
-> For support of the older PinkCrab Plugin Framework please use **Hook Subscriber v0.2.2**
-
-Works with PHP versions 7.2, 7.3, 7.4, 8.0, 8.1 & 8.2*
-
-> Please note PHP8.2 is only supported on WordPress 6.1 and above.
+Requires PinkCrab Perique Framework V2.0.*
 
 ## Installation
 
@@ -135,6 +125,13 @@ function acme_plugin_function(){
 ```
 
 > When some_global_populated is fired, a new instance of Deferred_Hook is created and the callback is registered. This gives us access to Some_Global no matter whenever some_global_populated(). We end up creating 2 instances of our deferred hooks, once on init to register the first call, then again on our deferred hook, for the actual hook call.
+
+
+## Previous Versions
+
+* For Perique V1.0.* use Version 1.0.*
+* For Perique V0.4.* use Version 0.2.2
+* For Perique V0.3.* use Version 0.2.1
 
 ## Changelog
 * 2.0.0 - Drops support for PHP 7.2 & 7.3 and adds support for Perique V2.0.*
