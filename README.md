@@ -137,7 +137,7 @@ function acme_plugin_function(){
 > When some_global_populated is fired, a new instance of Deferred_Hook is created and the callback is registered. This gives us access to Some_Global no matter whenever some_global_populated(). We end up creating 2 instances of our deferred hooks, once on init to register the first call, then again on our deferred hook, for the actual hook call.
 
 ## Changelog
-
+* 2.0.0 - Drops support for PHP 7.2 & 7.3 and adds support for Perique V2.0.*
 * 1.0.1 - Drops support for PHP 7.1, adds PHP8 support, updates all dependencies and adds 3rd party quality checks (Scrutinizer & CodeClimate)
 * 1.0.0 - Now supports Perique and its move from Registerable to Hookable interface naming.
 * **---- Core renamed from PinkCrab Plugin Framework to Perique ----**
