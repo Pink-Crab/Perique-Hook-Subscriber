@@ -19,7 +19,7 @@ class On_Single_Hook extends Abstract_Hook_Subscription {
 	 *
 	 * @var string|null
 	 */
-	protected $hook = 'pc_on_single_hook';
+	protected ?string $hook = 'pc_on_single_hook';
 
 	/**
 	 * Holds an array for testing callbacks.

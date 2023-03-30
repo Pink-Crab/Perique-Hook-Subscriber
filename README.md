@@ -41,7 +41,7 @@ class On_Single_Hook extends Abstract_Hook_Subscription {
     * The hook to register the subscriber
     * @var string
     */
-   protected $hook = 'some_hook';
+   protected ?string $hook = 'some_hook';
 
    /**
        * Some service
@@ -81,14 +81,14 @@ class Deferred_Hook extends Abstract_Hook_Subscription {
     * The hook to register the subscriber
     * @var string
     */
-   protected $hook = 'some_hook';
+   protected ?string $hook = 'some_hook';
 
    /**
     * Deferred hook to call
     *
     * @var string|null
     */
-   protected $deferred_hook = 'some_global_populated';
+   protected ?string $deferred_hook = 'some_global_populated';
 
    /**
     * Our global data
