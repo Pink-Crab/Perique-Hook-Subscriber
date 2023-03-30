@@ -1,6 +1,6 @@
 ![logo](/.github/assets/Perique-Hook-Sub-Card.jpg "PinkCrab Perique Hook Subscriber")
 
-# WordPress Hook Subscriber
+# Perique Hook Subscriber
 
 Creates a single subscriber for a hook, part of the PinkCrab Plugin Framework
 
@@ -25,7 +25,9 @@ Requires PinkCrab Perique Framework V1.*
 
 > For support of the older PinkCrab Plugin Framework please use **Hook Subscriber v0.2.2**
 
-Works with PHP versions 7.2, 7.3 & 7.4
+Works with PHP versions 7.2, 7.3, 7.4, 8.0, 8.1 & 8.2*
+
+> Please note PHP8.2 is only supported on WordPress 6.1 and above.
 
 ## Installation
 
@@ -124,7 +126,7 @@ class Deferred_Hook extends Abstract_Hook_Subscription {
 > Somewhere in another plugin or wp-core $some_global is populated, we can then hook in anytime from when thats created and our hook is actually called.
 
 ``` php
-function achme_plugin_function(){
+function acme_plugin_function(){
     global $some_global; // Currently empty/null
     $some_global = new Some_Global();
 
@@ -136,7 +138,7 @@ function achme_plugin_function(){
 
 ## Changelog
 
-* 1.0.1 - Drops support for PHP 7.1 and updates all dependencies and badges
+* 1.0.1 - Drops support for PHP 7.1, adds PHP8 support, updates all dependencies and adds 3rd party quality checks (Scrutinizer & CodeClimate)
 * 1.0.0 - Now supports Perique and its move from Registerable to Hookable interface naming.
 * **---- Core renamed from PinkCrab Plugin Framework to Perique ----**
 * 0.2.2 Updated tests and code to reflect changes in Framework 0.4.*
