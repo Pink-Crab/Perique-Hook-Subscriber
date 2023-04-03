@@ -35,21 +35,21 @@ abstract class Abstract_Hook_Subscription implements Hook_Subscriber {
 	 *
 	 * @var string|null
 	 */
-	protected $hook;
+	protected ?string $hook = null;
 
 	/**
 	 * Optional hook to use to register the primary hook.
 	 *
 	 * @var string|null
 	 */
-	protected $deferred_hook;
+	protected ?string $deferred_hook = null;
 
 	/**
 	 * Hook call priority
 	 *
 	 * @var int
 	 */
-	protected $priority = 10;
+	protected int $priority = 10;
 
 	/**
 	 * Number of args passed.
@@ -57,7 +57,7 @@ abstract class Abstract_Hook_Subscription implements Hook_Subscriber {
 	 *
 	 * @var int
 	 */
-	protected $args = 20;
+	protected int $args = 20;
 
 	/**
 	 * Registers subscriber to the loader.

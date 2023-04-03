@@ -18,23 +18,23 @@ class Deferred_Hook extends Abstract_Hook_Subscription {
 	 *
 	 * @var string|null
 	 */
-	protected $hook = 'pc_on_deferred_hook';
+	protected ?string $hook = 'pc_on_deferred_hook';
 
 	/**
 	 * Defered hook to call
 	 *
 	 * @var string|null
 	 */
-	protected $deferred_hook = 'pc_pre_deferred_hook';
+	protected ?string $deferred_hook = 'pc_pre_deferred_hook';
 
 	/**
 	 * Holds an array for testing callbacks.
 	 *
 	 * @var array
 	 */
-	public static $log = array();
+	public static array $log = array();
 
-	public static $deferred = null;
+	public static ?string $deferred = null;
 
 	/**
 	 * Constructor to log when its created

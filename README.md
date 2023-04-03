@@ -7,27 +7,20 @@ Creates a single subscriber for a hook, part of the PinkCrab Plugin Framework
 [![Latest Stable Version](http://poser.pugx.org/pinkcrab/wp-hook-subscriber/v)](https://packagist.org/packages/pinkcrab/wp-hook-subscriber) [![Total Downloads](http://poser.pugx.org/pinkcrab/wp-hook-subscriber/downloads)](https://packagist.org/packages/pinkcrab/wp-hook-subscriber) [![Latest Unstable Version](http://poser.pugx.org/pinkcrab/wp-hook-subscriber/v/unstable)](https://packagist.org/packages/pinkcrab/wp-hook-subscriber) [![License](http://poser.pugx.org/pinkcrab/wp-hook-subscriber/license)](https://packagist.org/packages/pinkcrab/wp-hook-subscriber) [![PHP Version Require](http://poser.pugx.org/pinkcrab/wp-hook-subscriber/require/php)](https://packagist.org/packages/pinkcrab/wp-hook-subscriber)
 ![GitHub contributors](https://img.shields.io/github/contributors/Pink-Crab/Perique-Hook-Subscriber?label=Contributors)
 ![GitHub issues](https://img.shields.io/github/issues-raw/Pink-Crab/Perique-Hook-Subscriber)
+
 [![WordPress 5.9 Test Suite [PHP7.2-8.1]](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_5_9.yaml/badge.svg)](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_5_9.yaml)
 [![WordPress 6.0 Test Suite [PHP7.2-8.1]](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_6_0.yaml/badge.svg)](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_6_0.yaml)
 [![WordPress 6.1 Test Suite [PHP7.2-8.2]](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_6_1.yaml/badge.svg)](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_6_1.yaml)
+[![WP6.2 [PHP7.2-8.2] Tests](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_6_2.yaml/badge.svg)](https://github.com/Pink-Crab/Perique-Hook-Subscriber/actions/workflows/WP_6_2.yaml)
+
 [![codecov](https://codecov.io/gh/Pink-Crab/Perique-Hook-Subscriber/branch/master/graph/badge.svg?token=EYM4QX2CQ9)](https://codecov.io/gh/Pink-Crab/Perique-Hook-Subscriber)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Pink-Crab/Perique-Hook-Subscriber/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Pink-Crab/Perique-Hook-Subscriber/?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8ac18bb04673f4a0dfa4/maintainability)](https://codeclimate.com/github/Pink-Crab/Perique-Hook-Subscriber/maintainability)
 
 
-
-
-***********************************************
-
 ## Requirements
 
-Requires PinkCrab Perique Framework V1.* 
-
-> For support of the older PinkCrab Plugin Framework please use **Hook Subscriber v0.2.2**
-
-Works with PHP versions 7.2, 7.3, 7.4, 8.0, 8.1 & 8.2*
-
-> Please note PHP8.2 is only supported on WordPress 6.1 and above.
+Requires PinkCrab Perique Framework V2.0.*
 
 ## Installation
 
@@ -50,7 +43,7 @@ class On_Single_Hook extends Abstract_Hook_Subscription {
     * The hook to register the subscriber
     * @var string
     */
-   protected $hook = 'some_hook';
+   protected ?string $hook = 'some_hook';
 
    /**
        * Some service
@@ -90,14 +83,14 @@ class Deferred_Hook extends Abstract_Hook_Subscription {
     * The hook to register the subscriber
     * @var string
     */
-   protected $hook = 'some_hook';
+   protected ?string $hook = 'some_hook';
 
    /**
     * Deferred hook to call
     *
     * @var string|null
     */
-   protected $deferred_hook = 'some_global_populated';
+   protected ?string $deferred_hook = 'some_global_populated';
 
    /**
     * Our global data
@@ -136,8 +129,15 @@ function acme_plugin_function(){
 
 > When some_global_populated is fired, a new instance of Deferred_Hook is created and the callback is registered. This gives us access to Some_Global no matter whenever some_global_populated(). We end up creating 2 instances of our deferred hooks, once on init to register the first call, then again on our deferred hook, for the actual hook call.
 
-## Changelog
 
+## Previous Versions
+
+* For Perique V1.0.* use Version 1.0.*
+* For Perique V0.4.* use Version 0.2.2
+* For Perique V0.3.* use Version 0.2.1
+
+## Changelog
+* 2.0.0 - Drops support for PHP 7.2 & 7.3 and adds support for Perique V2.0.*
 * 1.0.1 - Drops support for PHP 7.1, adds PHP8 support, updates all dependencies and adds 3rd party quality checks (Scrutinizer & CodeClimate)
 * 1.0.0 - Now supports Perique and its move from Registerable to Hookable interface naming.
 * **---- Core renamed from PinkCrab Plugin Framework to Perique ----**
