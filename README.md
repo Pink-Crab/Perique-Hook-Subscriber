@@ -137,6 +137,7 @@ function acme_plugin_function(){
 * For Perique V0.3.* use Version 0.2.1
 
 ## Changelog
+* 2.0.1 - Updates dev dependencies
 * 2.0.0 - Drops support for PHP 7.2 & 7.3 and adds support for Perique V2.0.*
 * 1.0.1 - Drops support for PHP 7.1, adds PHP8 support, updates all dependencies and adds 3rd party quality checks (Scrutinizer & CodeClimate)
 * 1.0.0 - Now supports Perique and its move from Registerable to Hookable interface naming.
