@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * Abstract Class for registering single hook subscriber.
  *
@@ -76,7 +77,7 @@ abstract class Abstract_Hook_Subscription implements Hook_Subscriber {
 		if ( ! empty( $this->deferred_hook ) ) {
 			$loader->action(
 				$this->deferred_hook,
-				function( ...$args ) { // phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.FoundInImplementedInterface
+				function ( ...$args ) { // phpcs:disable
 
 					// Create a new isntance using DI and register using the defined hook.
 					$instance = App::make( static::class );
