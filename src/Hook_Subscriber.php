@@ -34,5 +34,5 @@ interface Hook_Subscriber extends Hookable {
 	 * @param mixed ...$args
 	 * @return void
 	 */
-	public function execute( ...$args): void;
+	public function execute( ...$args ): void;
 }
